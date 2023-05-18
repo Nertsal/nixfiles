@@ -115,6 +115,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     neofetch # NixOS btw
+    pavucontrol # Audio control gui
+    linux-wifi-hotspot # Easy hotspot gui
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     helix # Text editor
     wget
@@ -127,7 +129,6 @@
     bat # `cat` with wings
     just # Just a command runner
     zoxide # `cd` with memory
-    pavucontrol # Audio control gui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -139,6 +140,17 @@
   # };
 
   # List services that you want to enable:
+
+  # Wifi hotspot configuration
+  services.create_ap = {
+    enable = true;
+    settings = {
+      INTERNET_IFACE = "enp59s0";
+      WIFI_IFACE = "wlp0s20f3";
+      SSID = "NertsalWifi";
+      PASSPHRASE = "19283746";
+    };
+  };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
