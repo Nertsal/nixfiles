@@ -10,6 +10,15 @@
       ./hardware-configuration.nix
     ];
 
+  nix = {
+    settings = {
+      # Enable flakes and new `nix` command
+      experimental-features = [ "nix-command" "flakes"];
+      # Deduplicate and optimize nix store
+      auto-optimise-store = true;
+    };
+  };
+
   nixpkgs = {
     config = {
       allowUnfree = true;
@@ -21,9 +30,19 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixal"; # Define your hostname.
+
   # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  # Using wpa_supplicant because of wpa-eap (see right below)
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
+
+  # Allow configuration via `wpa_gui` and `wpa_cli`
+  # (user must also be part of `wheel` group)
+  networking.wireless.userControlled.enable = true;
+  # Allow insecure ciphers for WPA2-EAP institutional network connection
+  networking.wireless.extraConfig = ''
+    openssl_ciphers=DEFAULT@SECLEVEL=0
+  '';
 
   # Fix time for dual-booting Windows
   time.hardwareClockInLocalTime = true;
@@ -49,8 +68,10 @@
   # Enable GNOME display manager
   services.xserver.displayManager.gdm.enable = true;
 
+  services.xserver.desktopManager.gnome.enable = true;
+
   # Enable Hyprland
-  programs.hyprland.enable = true;
+  # programs.hyprland.enable = true;
   
 
   # Configure keymap in X11
@@ -73,24 +94,29 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nertsal = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" ]; # 'wheel' enables ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
+      tdesktop
     ];
   };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neofetch # NixOS btw
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    helix # Text editor
     wget
-    alacritty
+    alacritty # Terminal
     kitty # Hyprland default terminal
     wl-clipboard # wayland clipboard
     git
-    lsd
-    bat
-    just
+    lazygit # Simple git tui
+    lsd # better `ls`
+    bat # `cat` with wings
+    just # Just a command runner
+    zoxide # `cd` with memory
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -104,11 +130,11 @@
   # List services that you want to enable:
 
   # Pipewire audio
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    pulse.enable = true;
-  };
+  # services.pipewire = {
+    # enable = true;
+    # alsa.enable = true;
+    # pulse.enable = true;
+  # };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
