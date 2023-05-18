@@ -85,8 +85,18 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+
+  # Pipewire audio
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    pulse.enable = true;
+  };
+
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -117,6 +127,7 @@
     bat # `cat` with wings
     just # Just a command runner
     zoxide # `cd` with memory
+    pavucontrol # Audio control gui
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -128,13 +139,6 @@
   # };
 
   # List services that you want to enable:
-
-  # Pipewire audio
-  # services.pipewire = {
-    # enable = true;
-    # alsa.enable = true;
-    # pulse.enable = true;
-  # };
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
