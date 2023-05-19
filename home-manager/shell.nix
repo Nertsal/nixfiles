@@ -14,15 +14,18 @@
     '';
     functions = {
       update_hm_env = ''
-      set -e __HM_SESS_VARS_SOURCES
-      set --prepend fish_function_path ${
-        if pkgs ? fishPlugins && pkgs.fishPlugins ? foreign-env then
-          "${pkgs.fishPlugins.foreign-env}/share/fish/vendor_functions.d"
-        else
-          "${pkgs.fish-foreign-env}/share/fish-foreign-env/functions"
-      }
-      fenv source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh > /dev/null
-      set -e fish_function_path[1]
+        set -e __HM_SESS_VARS_SOURCES
+        set --prepend fish_function_path ${
+          if pkgs ? fishPlugins && pkgs.fishPlugins ? foreign-env then
+            "${pkgs.fishPlugins.foreign-env}/share/fish/vendor_functions.d"
+          else
+            "${pkgs.fish-foreign-env}/share/fish-foreign-env/functions"
+        }
+        fenv source ${config.home.profileDirectory}/etc/profile.d/hm-session-vars.sh > /dev/null
+        set -e fish_function_path[1]
+      '';
+      haskell_env = ''
+        nix-shell -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ $argv ])"
       '';
     };
     shellAliases = {
