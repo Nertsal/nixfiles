@@ -31,18 +31,90 @@
 
   networking.hostName = "nixal"; # Define your hostname.
 
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.nertsal = {
+    isNormalUser = true;
+    extraGroups = [
+      "wheel" # Enable ‘sudo’ for the user
+      "video" # To adjust screen brightness
+    ];
+    packages = with pkgs; [
+      firefox
+      tdesktop
+    ];
+  };
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    neofetch # NixOS btw
+    killall # Wonder what's this for...
+    pavucontrol # Audio control gui
+    brightnessctl # Regulate screen brightness
+    waybar # Wayland bar
+    swaylock # Wayland locker
+    # bemenu # Dynamic menu library
+    wofi # Dynamic menu library
+    linux-wifi-hotspot # Easy hotspot gui
+    grim # Screenshot backend
+    slurp # Region selection utility
+    gscreenshot # Screenshot utility
+    tealdeer # Fast `tldr` - short `man`
+    neovim # Text editor
+    helix # Text editor
+    wget
+    alacritty # Terminal
+    kitty # Hyprland default terminal
+    wl-clipboard # Wayland clipboard
+    cava # Audio visualizer
+    git
+    lazygit # Simple git tui
+    lsd # `ls` with nerdcons
+    bat # `cat` with wings
+    bottom # Bottom to top
+    fd # User-friendly find
+    xh # Friendly curl
+    xxh # Bring your shell through ssh
+    erdtree # File-tree visualizer and disk usage analyzer
+    felix-fm # Tui file manager
+    ripgrep # Grep the rip
+    topgrade # Update everything
+    kondo # Cleaner after you upgrade everything
+    tokei # Scan project languages and lines of code
+    zellij # The superiour terminal multiplexer
+    bacon # Background rust code checker
+    just # Just a command runner
+    zoxide # `cd` with memory
+  ];
+
+  nixpkgs.overlays = [
+    (self: super: {
+      # Waybar experimental features
+      waybar = super.waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      });
+    })
+  ];
+
+  fonts.fonts = with pkgs; [
+      nerdfonts
+  ];
+
   # Pick only one of the below networking options.
   # Using wpa_supplicant because of wpa-eap (see right below)
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
-
-  # Allow configuration via `wpa_gui` and `wpa_cli`
-  # (user must also be part of `wheel` group)
-  networking.wireless.userControlled.enable = true;
-  # Allow insecure ciphers for WPA2-EAP institutional network connection
-  networking.wireless.extraConfig = ''
-    openssl_ciphers=DEFAULT@SECLEVEL=0
-  '';
+  # Enables wireless support via wpa_supplicant.
+  networking.wireless = {
+    enable = true;
+    # Allow configuration via `wpa_gui` and `wpa_cli`
+    # (user must also be part of `wheel` group)
+    # userControlled.enable = true;
+    # Allow insecure ciphers for WPA2-EAP institutional network connection
+    # extraConfig = ''
+    #   openssl_ciphers=DEFAULT@SECLEVEL=0
+    # '';
+  };
 
   # Fix time for dual-booting Windows
   time.hardwareClockInLocalTime = true;
@@ -68,11 +140,15 @@
   # Enable GNOME display manager
   services.xserver.displayManager.gdm.enable = true;
 
-  services.xserver.desktopManager.gnome.enable = true;
-
   # Enable Hyprland
-  # programs.hyprland.enable = true;
-  
+  programs.hyprland.enable = true;
+
+  # Swaylock pam
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -100,36 +176,6 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.nertsal = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # 'wheel' enables ‘sudo’ for the user.
-    packages = with pkgs; [
-      firefox
-      tdesktop
-    ];
-  };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neofetch # NixOS btw
-    pavucontrol # Audio control gui
-    linux-wifi-hotspot # Easy hotspot gui
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    helix # Text editor
-    wget
-    alacritty # Terminal
-    kitty # Hyprland default terminal
-    wl-clipboard # wayland clipboard
-    git
-    lazygit # Simple git tui
-    lsd # better `ls`
-    bat # `cat` with wings
-    just # Just a command runner
-    zoxide # `cd` with memory
-  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
