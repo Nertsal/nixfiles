@@ -1,0 +1,27 @@
+[[language]]
+name = "rust"
+
+[language.config]
+check = { command = "clippy", extraArgs = "-w" }
+
+[[language]]
+name = "markdown"
+language-server = { command = "mdpls" }
+config = { markdown.preview.auto = false, markdown.preview.browser = "firefox" }
+
+# [[language]]
+# name = "python"
+# file-types = ["py"]
+# language-server = { command = "pyright" }
+
+[[language]]
+name = "roc"
+scope = "source.roc"
+file-types = ["roc"]
+roots = []
+indent = { tab-width = 4, unit = "    " }
+comment-token = "#"
+
+[[grammar]]
+name = "roc"
+source = { git = "https://github.com/jawj/coffee-script", rev = "d06f568cd0d16e75740297068132bb9786642070", subpath = "src/grammar.coffee" }

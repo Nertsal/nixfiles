@@ -1,0 +1,13 @@
+theme = "ayu_dark"
+
+[editor]
+line-number = "relative"
+
+[editor.cursor-shape]
+insert = "bar"
+
+[keys.normal]
+C-s = ":w"
+C-y = ":clipboard-yank"
+C-p = ":clipboard-paste-before"
+C-v = ":clipboard-paste-before"

@@ -35,13 +35,15 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nertsal = {
     isNormalUser = true;
+    shell = pkgs.fish; # Default shell
     extraGroups = [
       "wheel" # Enable ‘sudo’ for the user
       "video" # To adjust screen brightness
     ];
     packages = with pkgs; [
-      firefox
-      tdesktop
+      firefox # Browser
+      tdesktop # Telegram
+      gimp # Image editor
     ];
   };
 
@@ -88,18 +90,7 @@
     zoxide # `cd` with memory
   ];
 
-  nixpkgs.overlays = [
-    (self: super: {
-      # Waybar experimental features
-      waybar = super.waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-      });
-    })
-  ];
-
-  fonts.fonts = with pkgs; [
-      nerdfonts
-  ];
+  programs.fish.enable = true;
 
   # Pick only one of the below networking options.
   # Using wpa_supplicant because of wpa-eap (see right below)
@@ -151,7 +142,10 @@
   };
 
   # Configure keymap in X11
-  services.xserver.layout = "us";
+  services.xserver = {
+    layout = "us,ru";
+    xkbOptions = "grp:alt_shift_toggle";
+  };
   # services.xserver.xkbOptions = {
   #   "eurosign:e";
   #   "caps:escape" # map caps to escape.
