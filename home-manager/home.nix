@@ -1,5 +1,25 @@
 { config, pkgs, inputs, ... }:
 
+let
+  # 'onedarker'
+  # <https://github.com/helix-editor/helix/blob/master/runtime/themes/onedarker.toml>
+  mainColors = {
+    yellow = "#d5b06b";
+    blue = "#519fdf";
+    red = "#d05c65";
+    purple = "#b668cd";
+    green = "#7da869";
+    gold = "#d19a66";
+    cyan = "#46a6b2";
+    white = "#abb2bf";
+    black = "#16181a";
+    light-black = "#2c323c";
+    gray = "#252d30";
+    faint-gray = "#abb2bf";
+    light-gray = "#636c6e";
+    linenr = "#282c34";
+  };
+in
 {
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -28,6 +48,32 @@
     # You can also split up your configuration and import pieces of it here:
     ./shell.nix
   ];
+
+  # inputs.nix-colors.colorSchemes.icy
+  # Set color scheme for use in configs
+  colorScheme = {
+    slug = "nertdarker";
+    name = "NertDarker";
+    author = "Nertsal";
+    colors = {
+      base00 = "#081012"; # "#081012"; # black
+      base01 = "#abb2bf"; # "#353b45"; # ?
+      base02 = "#252d30"; # "#3e4451"; # gray
+      base03 = "#545862"; # "#545862"; # ?
+      base04 = "#565c64"; # "#565c64"; # ?
+      base05 = "#abb2bf"; # "#abb2bf"; # white
+      base06 = "#b6bdca"; # "#b6bdca"; # ?
+      base07 = "#c8ccd4"; # "#c8ccd4"; # purple?
+      base08 = "#d05c65"; # "#e06c75"; # red
+      base09 = "#d19a66"; # "#d19a66"; # gold
+      base0A = "#d5b06b"; # "#e5c07b"; # yellow
+      base0B = "#7da869"; # "#98c379"; # green
+      base0C = "#46a6b2"; # "#56b6c2"; # cyan
+      base0D = "#519fdf"; # "#61afef"; # blue
+      base0E = "#b668cd"; # "#c678dd"; # purple
+      base0F = "#be5046"; # "#be5046"; # ?
+    };
+  };
 
   nixpkgs = {
     # You can add overlays here
@@ -89,6 +135,7 @@
 
     ".config/hypr/hyprland.conf".source = ./hyprland.conf;
     ".config/helix".source = ./helix;
+    ".config/alacritty.yml".source = ./alacritty.yml;
 
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
@@ -113,6 +160,7 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
+    SHELL = "fish";
     EDITOR = "hx";
   };
 
@@ -134,22 +182,23 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      font = {
+      shell.program = "fish";
+      colors = {
+        primary = {
+          background = "#${config.colorScheme.colors.base00}";
+          foreground = "#${config.colorScheme.colors.base05}";
+        };
         normal = {
-          family = "JetBrainsMono Nerd Font";
-          style = "Regular";
+          black = "${mainColors.black}";
+          red = "${mainColors.red}";
+          green = "${mainColors.green}";
+          yellow = "${mainColors.yellow}";
+          blue = "${mainColors.blue}";
+          magenta = "${mainColors.purple}";
+          cyan = "${mainColors.cyan}";
+          white = "${mainColors.white}";
         };
-        bold = {
-          family = "JetBrainsMono Nerd Font";
-          style = "Bold";
-        };
-        italic = {
-          family = "JetBrainsMono Nerd Font";
-          style = "Italic";
-        };
-        size = 16;
       };
-      window.opacity = 1.0;
     };
   };
 

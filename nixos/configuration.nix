@@ -91,6 +91,7 @@
   ];
 
   programs.fish.enable = true;
+  environment.shells = with pkgs; [ fish ];
 
   # Pick only one of the below networking options.
   # Using wpa_supplicant because of wpa-eap (see right below)

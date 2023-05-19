@@ -10,6 +10,7 @@
       cd ~/data
     '';
     shellInit = ''
+      . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
       set fish_greeting '''
     '';
     functions = {
@@ -45,10 +46,15 @@
   };
 
   # Bash
-  programs.bash.enable = true;
   # programs.dircolors.enableBashIntegration = true;
   programs.starship.enableBashIntegration = true;
-  programs.bash.shellAliases = config.programs.fish.shellAliases;
+  programs.bash = {
+    enable = true;
+    initExtra = ''
+      . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+    '';
+    shellAliases = config.programs.fish.shellAliases;
+  };
 
   # Zsh
   programs.zsh.enable = false;
