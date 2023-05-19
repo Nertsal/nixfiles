@@ -66,8 +66,8 @@
   # Starship
   programs.starship.enable = true;
   programs.starship.settings = {
-    add_newline = false;
-    format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+    add_newline = true;
+    format = "$time$shlvl$shell$username$hostname$nix_shell on $git_branch$git_commit$git_state$git_status$jobs took $cmd_duration\n$directory$character";
     shlvl = {
       disabled = false;
       symbol = "ﰬ";
@@ -96,7 +96,7 @@
     git_branch = {
       only_attached = true;
       format = "[$symbol$branch]($style) ";
-      symbol = "שׂ";
+      symbol = "";
       style = "bright-yellow bold";
     };
     git_commit = {
@@ -113,6 +113,11 @@
     directory = {
       read_only = " ";
       truncation_length = 0;
+    };
+    time = {
+      disabled = false;
+      format = "[$time]($style)";
+      style = "bold yellow";
     };
     cmd_duration = {
       format = "[$duration]($style) ";
