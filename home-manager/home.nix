@@ -87,13 +87,6 @@ in
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-
-      # Waybar experimental features
-      (self: super: {
-        waybar = super.waybar.overrideAttrs (oldAttrs: {
-          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-        });
-      })
     ];
     # Configure your nixpkgs instance
     config = {
@@ -134,6 +127,7 @@ in
     '';
 
     ".config/hypr/hyprland.conf".source = ./hyprland.conf;
+    ".config/waybar".source = ./waybar;
     ".config/helix".source = ./helix;
     ".config/alacritty.yml".source = ./alacritty.yml;
 

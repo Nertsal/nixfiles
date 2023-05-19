@@ -39,6 +39,7 @@
     extraGroups = [
       "wheel" # Enable ‘sudo’ for the user
       "video" # To adjust screen brightness
+      "input" # To read keyboard input
     ];
     packages = with pkgs; [
       firefox # Browser
@@ -134,6 +135,15 @@
 
   # Enable Hyprland
   programs.hyprland.enable = true;
+
+  nixpkgs.overlays = [
+    # Waybar experimental features
+    (self: super: {
+      waybar = super.waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+      });
+    })
+  ];
 
   # Swaylock pam
   security.pam.services.swaylock = {
