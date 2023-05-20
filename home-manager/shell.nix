@@ -4,6 +4,8 @@
   # Fish
   # programs.dircolors.enableFishIntegration = true;
   programs.starship.enableFishIntegration = true;
+  programs.zoxide.enableFishIntegration = true;
+  programs.zellij.enableFishIntegration = true;
   programs.fish = {
     enable = true;
     loginShellInit = ''
@@ -48,6 +50,8 @@
   # Bash
   # programs.dircolors.enableBashIntegration = true;
   programs.starship.enableBashIntegration = true;
+  programs.zoxide.enableBashIntegration = true;
+  programs.zellij.enableBashIntegration = true;
   programs.bash = {
     enable = true;
     initExtra = ''
@@ -56,18 +60,27 @@
     shellAliases = config.programs.fish.shellAliases;
   };
 
-  # Zsh
-  programs.zsh.enable = false;
-  # programs.dircolors.enableZshIntegration = true;
-  programs.starship.enableZshIntegration = false;
-  programs.zsh.shellAliases = config.programs.fish.shellAliases;
-  programs.zsh.enableAutosuggestions = true;
+  # Zellij - the superiour terminal multiplexer
+  programs.zellij.enable = true;
+  programs.zellij.settings = {
+    simplified_ui = true;
+    default_layout = "compact";
+    default_mode = "normal";
+    copy_on_select = false;
+    ui.pane_frames = {
+      rounded_corners = true;
+      hide_session_name = true;
+    };
+  };
+
+  # Zoxide - `cd` with memory
+  programs.zoxide.enable = true;
 
   # Starship
   programs.starship.enable = true;
   programs.starship.settings = {
     add_newline = true;
-    format = "$time$shlvl$shell$username$hostname$nix_shell on $git_branch$git_commit$git_state$git_status$jobs took $cmd_duration\n$directory$character";
+    format = "$time$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$jobs$cmd_duration\n$directory$character";
     shlvl = {
       disabled = false;
       symbol = "ﰬ";
@@ -95,7 +108,7 @@
     };
     git_branch = {
       only_attached = true;
-      format = "[$symbol$branch]($style) ";
+      format = " on [$symbol$branch]($style) ";
       symbol = "";
       style = "bright-yellow bold";
     };
@@ -120,7 +133,7 @@
       style = "bold yellow";
     };
     cmd_duration = {
-      format = "[$duration]($style) ";
+      format = " took [$duration]($style) ";
       style = "bright-blue";
     };
     jobs = {

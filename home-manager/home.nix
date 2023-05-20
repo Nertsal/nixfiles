@@ -57,13 +57,13 @@ in
     author = "Nertsal";
     colors = {
       base00 = "#081012"; # "#081012"; # black
-      base01 = "#abb2bf"; # "#353b45"; # ?
+      base01 = "#abb2bf"; # "#353b45"; # ?Charcoal
       base02 = "#252d30"; # "#3e4451"; # gray
-      base03 = "#545862"; # "#545862"; # ?
-      base04 = "#565c64"; # "#565c64"; # ?
+      base03 = "#545862"; # "#545862"; # ?Davy's gray
+      base04 = "#565c64"; # "#565c64"; # ?Davy's gray
       base05 = "#abb2bf"; # "#abb2bf"; # white
-      base06 = "#b6bdca"; # "#b6bdca"; # ?
-      base07 = "#c8ccd4"; # "#c8ccd4"; # purple?
+      base06 = "#b6bdca"; # "#b6bdca"; # ?French gray
+      base07 = "#c8ccd4"; # "#c8ccd4"; # ?Frech gray
       base08 = "#d05c65"; # "#e06c75"; # red
       base09 = "#d19a66"; # "#d19a66"; # gold
       base0A = "#d5b06b"; # "#e5c07b"; # yellow
@@ -71,7 +71,7 @@ in
       base0C = "#46a6b2"; # "#56b6c2"; # cyan
       base0D = "#519fdf"; # "#61afef"; # blue
       base0E = "#b668cd"; # "#c678dd"; # purple
-      base0F = "#be5046"; # "#be5046"; # ?
+      base0F = "#be5046"; # "#be5046"; # ?Bittersweet shimmer
     };
   };
 
@@ -197,6 +197,24 @@ in
           white = "${mainColors.white}";
         };
       };
+    };
+  };
+
+  # Terminal multiplexer
+  programs.zellij.settings = {
+    theme = "custom";
+    themes.custom = {
+      fg = "#${config.colorScheme.colors.base00}";
+      bg = "#${config.colorScheme.colors.base05}";
+      black = "${mainColors.black}";
+      red = "${mainColors.red}";
+      green = "${mainColors.green}";
+      yellow = "${mainColors.yellow}";
+      blue = "${mainColors.blue}";
+      magenta = "${mainColors.purple}";
+      cyan = "${mainColors.cyan}";
+      white = "${mainColors.white}";
+      orange = "#${config.colorScheme.colors.base0F}";
     };
   };
 

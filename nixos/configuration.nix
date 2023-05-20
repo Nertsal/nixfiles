@@ -85,10 +85,8 @@
     topgrade # Update everything
     kondo # Cleaner after you upgrade everything
     tokei # Scan project languages and lines of code
-    zellij # The superiour terminal multiplexer
     bacon # Background rust code checker
     just # Just a command runner
-    zoxide # `cd` with memory
   ];
 
   programs.fish.enable = true;
