@@ -104,6 +104,8 @@ in
     # # "Hello, world!" when run.
     # pkgs.hello
 
+    pkgs.hyprpaper
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -126,7 +128,7 @@ in
       { allowUnfree = true; }
     '';
 
-    ".config/hypr/hyprland.conf".source = ./hyprland.conf;
+    ".config/hypr".source = ./hypr;
     ".config/waybar".source = ./waybar;
     ".config/helix".source = ./helix;
     ".config/alacritty.yml".source = ./alacritty.yml;
@@ -177,6 +179,7 @@ in
     enable = true;
     settings = {
       shell.program = "fish";
+      window.opacity = 0.9;
       colors = {
         primary = {
           background = "#${config.colorScheme.colors.base00}";

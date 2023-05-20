@@ -7,8 +7,7 @@
 
 /* Set background colour of main waybar window */
 window#waybar{
-    background: #15161e;
-    border-bottom: 2px solid #5c6184;
+    background: rgba(21, 22, 30, 0.5); /* #15161e; */
 }
 
 /* Set background colour of tooltips */
@@ -26,7 +25,7 @@ tooltip {
 
 /* Sets active workspace to have a solid line on the bottom */
 #workspaces button.active {
-  border-bottom: 2px solid #7aa2f7;
+  border-bottom: 2px solid #519fdf;
   border-radius: 0px;
   margin-bottom: 2px;
 }
@@ -37,7 +36,7 @@ tooltip {
 }
 
 #workspaces button.urgent {
-  color: #F7768E;
+  color: #f7768e;
 }
 
 #workspaces button:hover {
@@ -49,7 +48,7 @@ tooltip {
 #workspaces,
 #cpu,
 #window {
-  background: #3b3e54;
+  background: rgba(8, 16, 18, 0.7); /* #081012; */
   padding: 0px 10px;
   margin: 3px 0px;
   border: 0px;
