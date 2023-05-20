@@ -46,7 +46,6 @@ tooltip {
 
 /* sets background, padding, margins, and borders for (all) modules */
 #workspaces,
-#cpu,
 #window {
   background: rgba(8, 16, 18, 0.8); /* #081012; */
   padding: 0px 10px;
