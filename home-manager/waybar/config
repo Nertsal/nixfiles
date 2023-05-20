@@ -26,13 +26,13 @@
     ],
     "hyprland/window": {
         "format": "{}",
-        "max-length": 20,
+        "max-length": 40,
         "separate-outputs": true,
     },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
-        "format": "{name}{icon}",
+        "format": "{icon}{name}",
         "format-icons": {
             "locked": " ",
             "unlocked": " ",
