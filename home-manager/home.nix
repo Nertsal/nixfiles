@@ -130,6 +130,7 @@ in
 
     ".config/hypr".source = ./hypr;
     ".config/waybar".source = ./waybar;
+    ".config/wofi".source = ./wofi;
     ".config/helix".source = ./helix;
     ".config/alacritty.yml".source = ./alacritty.yml;
 
