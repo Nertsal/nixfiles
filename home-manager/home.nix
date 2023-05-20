@@ -105,6 +105,7 @@ in
     # pkgs.hello
 
     pkgs.hyprpaper
+    pkgs.dunst
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -195,6 +196,36 @@ in
           cyan = "${mainColors.cyan}";
           white = "${mainColors.white}";
         };
+      };
+    };
+  };
+
+  # Notification daemon
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+        font = "FiraCode Nerd Font 12";
+        monitor = 1; # display on eDP-1
+        alignment = "left";
+        browser = "firefox";
+        corner_radius = 5;
+        layer = "top"; # to appear under fullscreen apps
+        transparency = 30;
+        offset = "10x20";
+        frame_color = "#c0caf5";
+      };
+      urgency_low = {
+        background = "${mainColors.black}";
+        foreground = "#635d5c";
+      };
+      urgency_normal = {
+        background = "${mainColors.black}";
+        foreground = "#c0caf5";
+      };
+      urgency_critical = {
+        background = "${mainColors.black}";
+        foreground = "#de3c4b";
       };
     };
   };
