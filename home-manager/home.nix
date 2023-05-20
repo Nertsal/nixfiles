@@ -180,7 +180,7 @@ in
     enable = true;
     settings = {
       shell.program = "fish";
-      window.opacity = 0.9;
+      window.opacity = 1.0; # Managed by hyprland
       colors = {
         primary = {
           background = "#${config.colorScheme.colors.base00}";
