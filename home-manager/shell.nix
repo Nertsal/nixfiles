@@ -5,7 +5,7 @@
   # programs.dircolors.enableFishIntegration = true;
   programs.starship.enableFishIntegration = true;
   programs.zoxide.enableFishIntegration = true;
-  programs.zellij.enableFishIntegration = true;
+  programs.zellij.enableFishIntegration = false;
   programs.fish = {
     enable = true;
     loginShellInit = ''
@@ -14,6 +14,7 @@
     shellInit = ''
       . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
       set fish_greeting '''
+      any-nix-shell fish --info-right | source
     '';
     functions = {
       update_hm_env = ''
@@ -51,7 +52,7 @@
   # programs.dircolors.enableBashIntegration = true;
   programs.starship.enableBashIntegration = true;
   programs.zoxide.enableBashIntegration = true;
-  programs.zellij.enableBashIntegration = true;
+  programs.zellij.enableBashIntegration = false;
   programs.bash = {
     enable = true;
     initExtra = ''
@@ -67,6 +68,7 @@
     default_layout = "compact";
     default_mode = "normal";
     copy_on_select = false;
+    copy_command = "wl-copy";
     ui.pane_frames = {
       rounded_corners = true;
       hide_session_name = true;
@@ -90,8 +92,8 @@
       disabled = false;
       format = "$indicator";
       fish_indicator = "";
-      bash_indicator = "[BASH](bright-white) ";
-      zsh_indicator = "[ZSH](bright-white) ";
+      bash_indicator = " [BASH](bright-white) ";
+      zsh_indicator = " [ZSH](bright-white) ";
     };
     username = {
       style_user = "bright-white bold";
@@ -102,7 +104,7 @@
       ssh_only = true;
     };
     nix_shell = {
-      symbol = "";
+      symbol = " ";
       format = "[$symbol$name]($style) ";
       style = "bright-purple bold";
     };
