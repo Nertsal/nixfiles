@@ -2,12 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./obs.nix
+      # ./nvidia.nix # Not working on wayland
     ];
 
   nix = {
@@ -27,10 +29,10 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 20; # don't show more than 10 entries
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixal"; # Define your hostname.
-
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nertsal = {
@@ -43,6 +45,7 @@
     ];
     packages = with pkgs; [
       firefox # Browser
+      brave # Browser because firefox is bad sometimes
       tdesktop # Telegram
       gimp # Image editor
     ];
@@ -74,6 +77,7 @@
     git
     lazygit # Simple git tui
     lsd # `ls` with nerdcons
+    exa # The real `ls`
     bat # `cat` with wings
     bottom # Bottom to top
     fd # User-friendly find
@@ -87,6 +91,11 @@
     tokei # Scan project languages and lines of code
     bacon # Background rust code checker
     just # Just a command runner
+    # irust # Rust repl
+    cargo-info # Fetch info about rust crates
+    speedtest-rs # Speedtest cli
+    wiki-tui # Wiki tui
+    rustup # Rust toolchain manager
   ];
 
   programs.fish.enable = true;
@@ -94,10 +103,10 @@
 
   # Pick only one of the below networking options.
   # Using wpa_supplicant because of wpa-eap (see right below)
-  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   # Enables wireless support via wpa_supplicant.
   networking.wireless = {
-    enable = true;
+    enable = false;
     # Allow configuration via `wpa_gui` and `wpa_cli`
     # (user must also be part of `wheel` group)
     # userControlled.enable = true;
@@ -130,9 +139,31 @@
 
   # Enable GNOME display manager
   services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
+  # environment.gnome.excludePackages = (with pkgs; [
+  #   gnome-photos
+  #   gnome-tour
+  # ]) ++ (with pkgs.gnome; [
+  #   cheese
+  #   gnome-music
+  #   gnome-terminal
+  #   gedit
+  #   epiphany
+  #   geary
+  #   evince
+  #   gnome-characters
+  #   totem
+  #   tali
+  #   iagno
+  #   hitori
+  #   atomix
+  # ]);
 
   # Enable Hyprland
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    nvidiaPatches = true; # For nvidia to work properly
+  };
 
   nixpkgs.overlays = [
     # Waybar experimental features
