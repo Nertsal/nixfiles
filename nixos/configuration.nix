@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./obs.nix
-      # ./nvidia.nix # Not working on wayland
+      ./nvidia.nix # Not working on wayland
     ];
 
   nix = {
@@ -29,7 +29,7 @@
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 20; # don't show more than 10 entries
+  boot.loader.systemd-boot.configurationLimit = 10; # limit number of entries
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixal"; # Define your hostname.
@@ -44,10 +44,7 @@
       "input" # To read keyboard input
     ];
     packages = with pkgs; [
-      firefox # Browser
-      brave # Browser because firefox is bad sometimes
-      tdesktop # Telegram
-      gimp # Image editor
+      # Moved to home-manager
     ];
   };
 
@@ -63,9 +60,13 @@
     # bemenu # Dynamic menu library
     wofi # Dynamic menu library
     linux-wifi-hotspot # Easy hotspot gui
+
+    firefox # Web browser (global because of opengl being global)
+
     grim # Screenshot backend
     slurp # Region selection utility
     gscreenshot # Screenshot utility
+
     tealdeer # Fast `tldr` - short `man`
     neovim # Text editor
     helix # Text editor
@@ -74,6 +75,7 @@
     kitty # Hyprland default terminal
     wl-clipboard # Wayland clipboard
     cava # Audio visualizer
+
     git
     lazygit # Simple git tui
     lsd # `ls` with nerdcons
@@ -91,11 +93,12 @@
     tokei # Scan project languages and lines of code
     bacon # Background rust code checker
     just # Just a command runner
-    # irust # Rust repl
-    cargo-info # Fetch info about rust crates
     speedtest-rs # Speedtest cli
     wiki-tui # Wiki tui
+
     rustup # Rust toolchain manager
+    cargo-info # Fetch info about rust crates
+    # irust # Rust repl
   ];
 
   programs.fish.enable = true;
@@ -136,6 +139,8 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+
+  # services.xserver.displayManager.lightdm.enable = true;
 
   # Enable GNOME display manager
   services.xserver.displayManager.gdm.enable = true;
