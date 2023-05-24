@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./obs.nix
-      ./nvidia.nix # Not working on wayland
+      ./nvidia.nix # Partially working on wayland
     ];
 
   nix = {
@@ -21,11 +21,7 @@
     };
   };
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
+  nixpkgs.config.allowUnfree = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -95,10 +91,7 @@
     just # Just a command runner
     speedtest-rs # Speedtest cli
     wiki-tui # Wiki tui
-
-    rustup # Rust toolchain manager
     cargo-info # Fetch info about rust crates
-    # irust # Rust repl
   ];
 
   programs.fish.enable = true;
