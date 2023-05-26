@@ -38,6 +38,7 @@
       "wheel" # Enable ‘sudo’ for the user
       "video" # To adjust screen brightness
       "input" # To read keyboard input
+      "docker" # Note: makes the user effectively root
     ];
     packages = with pkgs; [
       # Moved to home-manager
@@ -56,6 +57,7 @@
     # bemenu # Dynamic menu library
     wofi # Dynamic menu library
     linux-wifi-hotspot # Easy hotspot gui
+    wlr-randr # `xrandr` for wayland
 
     firefox # Web browser (global because of opengl being global)
 
@@ -74,6 +76,8 @@
 
     git
     lazygit # Simple git tui
+    act # Run CI locally (requires docker)
+
     lsd # `ls` with nerdcons
     exa # The real `ls`
     bat # `cat` with wings
@@ -92,6 +96,9 @@
     speedtest-rs # Speedtest cli
     wiki-tui # Wiki tui
     cargo-info # Fetch info about rust crates
+
+    rust-analyzer # Rust lsp
+    nil # Nix lsp
   ];
 
   programs.fish.enable = true;
@@ -205,7 +212,7 @@
   # Fix audio stutter
   environment.etc."pipewire/pipewire.conf.d/stutter-fix.conf".text = ''
     context.properties = {
-      default.clock.min-quantum = 256
+      default.clock.min-quantum = 512
     }
   '';
 
@@ -234,6 +241,12 @@
       SSID = "NertsalWifi";
       PASSPHRASE = "19283746";
     };
+  };
+
+  # Docker
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
   };
 
   # Enable the OpenSSH daemon.
