@@ -84,11 +84,11 @@
          "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"],
     },
     "memory": {
-        "interval": 30,
+        "interval": 5,
         "format": " {percentage}%",
     },
     "disk": {
-        "interval": 30,
+        "interval": 10,
         "format": "{used}",
         "path": "/",
     },
@@ -102,14 +102,14 @@
         "format-alt": "{ifname}",
     },
     "battery": {
-        "interval": 60,
+        "interval": 30,
         "states": {
             "critical": 15,
             "warning": 30
         },
         "format": "{icon}{capacity}%",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
