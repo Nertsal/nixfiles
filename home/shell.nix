@@ -33,10 +33,10 @@
       '';
     };
     shellAliases = {
-      # Shortcuts for `lsd`
-      l = "lsd -lA";
-      ls = "lsd -1A";
-      lt = "lsd --tree";
+      # Shortcuts for `exa`
+      l  = "exa --icons -la";
+      ls = "exa --icons -1a";
+      lt = "exa --icons --tree";
       # No vim, only neovim
       vim = "nvim";
       # Always interactive `mv`
