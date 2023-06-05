@@ -1,75 +1,111 @@
+/* Color scheme - Onedarker */
+/* <https://github.com/helix-editor/helix/blob/master/runtime/themes/onedarker.toml> */
+@define-color yellow      #d5b06b;
+@define-color blue        #519fdf;
+@define-color red         #d05c65;
+@define-color purple      #b668cd;
+@define-color green       #7da869;
+@define-color gold        #d19a66;
+@define-color cyan        #46a6b2;
+@define-color white       #abb2bf;
+@define-color black       #16181a;
+@define-color light-black #2c323c;
+@define-color gray        #252d30;
+@define-color faint-gray  #abb2bf;
+@define-color light-gray  #636c6e;
+@define-color linenr      #282c34;
+
+@define-color text        @white;
+@define-color tooltip     @white;
+@define-color bg1         @black;
+@define-color bg2         @light-black;
+@define-color active      @cyan;
+@define-color focused     @cyan;
+@define-color urgent      @red;
+@define-color hover       @faint-gray;
+
 * {
     font-family: SpaceMono Nerd Font, bold;
     font-weight: 900;
     font-size: 14px;
-    color: #c0caf5;
+    color: @text;
 }
 
 /* Set background colour of main waybar window */
 window#waybar{
-    background: rgba(21, 22, 30, 0.5); /* #15161e; */
+    background: rgba(22, 24, 26, 0.7); /* @bg1; */
 }
 
 /* Set background colour of tooltips */
 tooltip {
-  background: #1e1e2e;
+  background: @tooltip;
+}
+
+/* Set background, padding, margins, and borders */
+#workspaces,
+#window {
+  background: rgba(44, 50, 60, 0.8); /* @bg2; */
+  padding: 0px 10px;
+  margin: 3px 0px;
+  border: 0px;
+}
+
+/* Rounding */
+#pulseaudio,
+#cpu,
+#memory,
+#disk,
+#clock,
+#battery,
+#window {
+  border-radius: 8px 8px 8px 8px;
+}
+
+/* Rounding left-only */
+#clock.date {
+  border-radius: 8px 0px 0px 8px;
+}
+
+/* Rounding right-only */
+#language,
+#clock.time {
+  border-radius: 0px 8px 8px 0px;
+}
+
+#battery {
+  border-radius: 8px 8px 8px 8px;
+  margin-right: 4px;
+}
+
+#workspaces {
+  border-radius: 8px 8px 8px 8px;
+  margin-left: 4px;
 }
 
 /* Set workspace text colour and padding */
 #workspaces button {
   padding: 0px;
-  color: #c0caf5;
-  border-bottom: 2px solid #c0caf5;
+  color: @text;
+  border-bottom: 2px solid @text;
   margin-bottom: 2px;
 }
 
-/* Sets active workspace to have a solid line on the bottom */
+/* Set active workspace to have a solid line on the bottom */
 #workspaces button.active {
-  border-bottom: 2px solid #519fdf;
+  border-bottom: 2px solid @active;
   border-radius: 0px;
   margin-bottom: 2px;
 }
 
 /* More workspace stuff for highlighting on hover */
 #workspaces button.focused {
-  color: #a6adc8;
+  color: @focused;
 }
-
 #workspaces button.urgent {
-  color: #f7768e;
+  color: @urgent;
 }
-
 #workspaces button:hover {
   background: #11111b;
-  color: #cdd6f4;
-}
-
-/* sets background, padding, margins, and borders for (all) modules */
-#workspaces,
-#window {
-  background: rgba(8, 16, 18, 0.8); /* #081012; */
-  padding: 0px 10px;
-  margin: 3px 0px;
-  border: 0px;
-}
-
-/* set up rounding to make these modules look like seperate pills */
-#tray {
-  border-radius: 8px 8px 8px 8px;
-  margin-right: 4px;
-}
-#workspaces {
-  border-radius: 8px 8px 8px 8px;
-  margin-left: 4px;
-}
-#language,
-#clock,
-#memory,
-#disk,
-#battery,
-#pulseaudio,
-#cpu,
-#window {
-  border-radius: 8px 8px 8px 8px;
+  color: @hover;
 }
 
