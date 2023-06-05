@@ -60,10 +60,10 @@
     wlr-randr # `xrandr` for wayland
 
     firefox # Web browser (global because of opengl being global)
+    chromium # Because sometimes firefox doesn't work
 
     grim # Screenshot backend
     slurp # Region selection utility
-    gscreenshot # Screenshot utility
 
     tealdeer # Fast `tldr` - short `man`
     neovim # Text editor
@@ -78,6 +78,8 @@
     lazygit # Simple git tui
     act # Run CI locally (requires docker)
 
+    zip
+    unzip
     lsd # `ls` with nerdcons
     exa # The real `ls`
     bat # `cat` with wings

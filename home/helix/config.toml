@@ -2,9 +2,26 @@ theme = "onedarker"
 
 [editor]
 line-number = "relative"
+auto-pairs = false # i don't like how it works here
+mouse = false # so i don't accidentally click (which happens with a touchpad often)
+completion-trigger-len = 1 # some identifiers are only 2 characters long KEKW
 
 [editor.cursor-shape]
 insert = "bar"
+
+[editor.file-picker]
+hidden = false # show hidden files
+
+[editor.indent-guides]
+render = true
+character = "⸽" # Some characters that work well: "▏", "┆", "┊", "⸽"
+skip-levels = 1
+
+[editor.soft-wrap]
+enable = true
+max-wrap = 25 # increase value to reduce forced mid-word wrapping
+max-indent-retain = 0
+wrap-indicator = "↪"  # set wrap-indicator to "" to hide it
 
 [keys.normal]
 C-s = ":w"
