@@ -5,9 +5,14 @@ name = "rust"
 check = { command = "clippy", extraArgs = "-w" }
 
 [[language]]
-name = "markdown"
-language-server = { command = "mdpls" }
-config = { markdown.preview.auto = false, markdown.preview.browser = "firefox" }
+name = "haskell"
+auto-format = true
+
+# Using default `marksman` now
+# [[language]]
+# name = "markdown"
+# language-server = { command = "mdpls" }
+# config = { markdown.preview.auto = false, markdown.preview.browser = "firefox" }
 
 # [[language]]
 # name = "python"

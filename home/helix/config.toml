@@ -2,7 +2,7 @@ theme = "onedarker"
 
 [editor]
 line-number = "relative"
-auto-pairs = false # i don't like how it works here
+# auto-pairs = false # i don't like how it works here # but i don't like it without it even more KEKW
 mouse = false # so i don't accidentally click (which happens with a touchpad often)
 completion-trigger-len = 1 # some identifiers are only 2 characters long KEKW
 
