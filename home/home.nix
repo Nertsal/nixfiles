@@ -101,10 +101,16 @@ in
   # environment.
   home.packages = with pkgs; [
     ghc # I like my `ghci`
+    # haskellPackages.ghcWithPackages (pkgs: with pkgs; [ cabal-install ])
+    cabal-install
+    ghcid
+    mesa_glu # Required for gloss
+    freeglut # Required for gloss
 
     gimp # Image editor
     tdesktop # Telegram
-    discord
+    webcord # Because discord cant screenshare on wayland
+    # discord
 
     kdenlive # Video editing
     aseprite # Older version
@@ -116,6 +122,12 @@ in
 
     # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
     nerdfonts
+
+    # LSP's
+    rust-analyzer # Rust
+    nil # Nix
+    haskellPackages.haskell-language-server # Haskell
+    marksman # Markdown
 
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
@@ -255,5 +267,17 @@ in
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  programs.vscode = {
+    enable = true;
+    extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+      vscodevim.vim
+      yzhang.markdown-all-in-one
+      ritwickdey.liveserver
+      ms-toolsai.jupyter
+      ms-python.python
+    ];
   };
 }

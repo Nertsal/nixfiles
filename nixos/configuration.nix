@@ -35,6 +35,7 @@
     isNormalUser = true;
     shell = pkgs.fish; # Default shell
     extraGroups = [
+      "networkmanager"
       "wheel" # Enable ‘sudo’ for the user
       "video" # To adjust screen brightness
       "input" # To read keyboard input
@@ -98,9 +99,6 @@
     speedtest-rs # Speedtest cli
     wiki-tui # Wiki tui
     cargo-info # Fetch info about rust crates
-
-    rust-analyzer # Rust lsp
-    nil # Nix lsp
   ];
 
   programs.fish.enable = true;
