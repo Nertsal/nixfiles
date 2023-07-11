@@ -181,7 +181,7 @@ in
   programs.git = {
     enable = true;
     userName = "nertsal";
-    userEmail = "sasha.kudasov04@gmail.com";
+    userEmail = "nestralnertsal@gmail.com";
     extraConfig = {
       init.defaultBranch = "main";
     };
