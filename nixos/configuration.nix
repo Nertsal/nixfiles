@@ -142,7 +142,7 @@
 
   # services.xserver.displayManager.lightdm.enable = true;
 
-  # Enable GNOME display manager
+  # GNOME
   services.xserver.displayManager.gdm.enable = true;
   # services.xserver.desktopManager.gnome.enable = true;
   # environment.gnome.excludePackages = (with pkgs; [
@@ -164,10 +164,19 @@
   #   atomix
   # ]);
 
-  # Enable Hyprland
+  # LeftWM
+  services.xserver.windowManager.leftwm.enable = true;
+
+  # Hyprland
   programs.hyprland = {
     enable = true;
     nvidiaPatches = true; # For nvidia to work properly
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
   };
 
   nixpkgs.overlays = [

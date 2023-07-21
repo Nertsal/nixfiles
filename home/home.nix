@@ -100,6 +100,8 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    dmenu # X program selector
+
     ghc # I like my `ghci`
     # haskellPackages.ghcWithPackages (pkgs: with pkgs; [ cabal-install ])
     cabal-install
@@ -113,10 +115,18 @@ in
     # discord
 
     kdenlive # Video editing
-    aseprite # Older version
+    aseprite # Pixel art - older version
+    audacity # Audio editing
 
+    # Wayland specific
     hyprpaper # Background image
     hyprpicker # Pick color from screen
+
+    # X specific
+    feh # Background
+    picom
+    polybar # Bar
+
     haruna # Media player
     any-nix-shell # Keep shell when in nix-shell
 
@@ -147,6 +157,10 @@ in
     ".config/hypr".source = ./hypr;
     ".config/waybar".source = ./waybar;
     ".config/wofi".source = ./wofi;
+
+    ".config/leftwm".source = ./leftwm;
+    ".config/polybar".source = ./polybar;
+
     ".config/helix".source = ./helix;
     ".config/alacritty.yml".source = ./alacritty.yml;
 
@@ -196,7 +210,7 @@ in
     enable = true;
     settings = {
       shell.program = "fish";
-      window.opacity = 1.0; # Managed by hyprland
+      window.opacity = 1.0;
       colors = {
         primary = {
           background = "#${config.colorScheme.colors.base00}";
