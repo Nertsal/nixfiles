@@ -139,6 +139,8 @@ in
     haskellPackages.haskell-language-server # Haskell
     marksman # Markdown
 
+    zola # Static site generator
+
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
