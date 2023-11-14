@@ -117,6 +117,7 @@ in
     kdenlive # Video editing
     aseprite # Pixel art - older version
     audacity # Audio editing
+    obsidian # Knowledge base
 
     # Wayland specific
     hyprpaper # Background image
@@ -200,6 +201,7 @@ in
     userEmail = "nestralnertsal@gmail.com";
     extraConfig = {
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
     };
   };
 

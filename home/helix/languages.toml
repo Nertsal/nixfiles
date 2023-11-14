@@ -2,6 +2,7 @@
 name = "rust"
 
 [language.config]
+cargo.features = "all"
 check = { command = "clippy", extraArgs = "-w" }
 
 [[language]]
@@ -26,6 +27,29 @@ file-types = ["roc"]
 roots = []
 indent = { tab-width = 4, unit = "    " }
 comment-token = "#"
+
+[[language]]
+name = "scala"
+auto-format = false # lags
+formatter = { command = "scalafmt" , args = ["--stdin"] }
+
+[[language]]
+name = "rhai"
+scope = "source.rhai"
+grammar = "rust"
+file-types = ["rhai"]
+roots = []
+indent = { tab-width = 4, unit = "    " }
+comment-token = "//"
+
+[[language]]
+name = "rune"
+scope = "source.rn"
+grammar = "rust"
+file-types = ["rn"]
+roots = []
+indent = { tab-width = 4, unit = "    " }
+comment-token = "//"
 
 [[grammar]]
 name = "roc"

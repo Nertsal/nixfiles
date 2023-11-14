@@ -247,7 +247,7 @@
     settings = {
       INTERNET_IFACE = "enp59s0";
       WIFI_IFACE = "wlp0s20f3";
-      SSID = "NertsalWifi";
+      SSID = "nert";
       PASSPHRASE = "19283746";
     };
   };
@@ -260,6 +260,10 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
+
+  # networking.dhcpcd.allowInterfaces = [ "enp59s0" "wlp0s20f3" ];
+  # networking.interfaces.enp59s0.useDHCP = true;
+  # networking.interfaces.wlp0s20f3.useDHCP = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
