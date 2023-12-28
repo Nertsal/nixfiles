@@ -82,7 +82,7 @@
     zip
     unzip
     lsd # `ls` with nerdcons
-    exa # The real `ls`
+    eza # The real `ls` (fork of exa)
     bat # `cat` with wings
     bottom # Bottom to top
     fd # User-friendly find
@@ -170,7 +170,6 @@
   # Hyprland
   programs.hyprland = {
     enable = true;
-    nvidiaPatches = true; # For nvidia to work properly
   };
 
   programs.steam = {
