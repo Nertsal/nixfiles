@@ -5,18 +5,18 @@
     "position": "top",
     "spacing": 4,
     "modules-left": [
-        "wlr/workspaces",
+        "hyprland/workspaces",
         "hyprland/submap",
         "hyprland/language",
         "keyboard-state",
         "network",
         "pulseaudio",
+        "cava",
     ],
     "modules-center": [
         "hyprland/window",
     ],
     "modules-right": [
-        "cava",
         "cpu",
         "memory",
         "disk",
@@ -49,7 +49,7 @@
         "format": "Mode: {}",
         "tooltip": true,
     },
-    "wlr/workspaces": {
+    "hyprland/workspaces": {
         "format": "{name}",
         "disable-scroll": false,
         "on-click": "activate",
@@ -86,8 +86,10 @@
         },
     },
     "cava": {
-        "cava_config": "$HOME/.config/cava/config",
+    //     "cava_config": "$HOME/.config/cava/config",
         "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+        "bars": 12,
+        "bar_delimiter": 0,
     },
     "cpu": {
          "interval": 5,

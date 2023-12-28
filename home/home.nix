@@ -117,7 +117,7 @@ in
     kdenlive # Video editing
     aseprite # Pixel art - older version
     audacity # Audio editing
-    obsidian # Knowledge base
+    # obsidian # Knowledge base
 
     # Wayland specific
     hyprpaper # Background image
