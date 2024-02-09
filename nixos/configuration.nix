@@ -257,6 +257,10 @@
     enableOnBoot = true;
   };
 
+  # VirtualBox
+  virtualisation.virtualbox.host.enable = true;
+  users.extraGroups.vboxusers.members = [ "nertsal" ];
+
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 

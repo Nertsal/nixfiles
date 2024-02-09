@@ -55,7 +55,7 @@ in
     slug = "nertdarker";
     name = "NertDarker";
     author = "Nertsal";
-    colors = {
+    palette = {
       base00 = "#081012"; # "#081012"; # black
       base01 = "#abb2bf"; # "#353b45"; # ?Charcoal
       base02 = "#252d30"; # "#3e4451"; # gray
@@ -118,6 +118,7 @@ in
     aseprite # Pixel art - older version
     audacity # Audio editing
     # obsidian # Knowledge base
+    ffmpeg # Audio stuff
 
     # Wayland specific
     hyprpaper # Background image

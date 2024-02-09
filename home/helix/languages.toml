@@ -9,6 +9,14 @@ check = { command = "clippy", extraArgs = "-w" }
 name = "haskell"
 auto-format = true
 
+[[language]]
+name = "gdscript"
+language-servers = ["godot"] 
+
+[language-server.godot]
+command = "nc"
+args = ["127.0.0.1", "6005"]
+
 # Using default `marksman` now
 # [[language]]
 # name = "markdown"
