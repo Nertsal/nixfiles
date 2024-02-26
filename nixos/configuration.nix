@@ -196,8 +196,10 @@
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us,ru";
-    xkbOptions = "grp:alt_shift_toggle";
+    xkb = {
+      layout = "us,ru";
+      options = "grp:alt_shift_toggle";
+    };
   };
   # services.xserver.xkbOptions = {
   #   "eurosign:e";
