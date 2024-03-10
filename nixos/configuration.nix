@@ -218,13 +218,12 @@
     enable = true;
     alsa.enable = true;
     pulse.enable = true;
+    extraConfig.pipewire."stutter-fix" = {
+      context.properties = {
+        default.clock.min-quantum = 512; # Fix audio stutter
+      };
+    };
   };
-  # Fix audio stutter
-  environment.etc."pipewire/pipewire.conf.d/stutter-fix.conf".text = ''
-    context.properties = {
-      default.clock.min-quantum = 512
-    }
-  '';
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
