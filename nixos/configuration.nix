@@ -241,17 +241,6 @@
 
   # List services that you want to enable:
 
-  # Wifi hotspot configuration
-  services.create_ap = {
-    enable = true;
-    settings = {
-      INTERNET_IFACE = "enp59s0";
-      WIFI_IFACE = "wlp0s20f3";
-      SSID = "nert";
-      PASSPHRASE = "19283746";
-    };
-  };
-
   # Docker
   virtualisation.docker = {
     enable = true;
