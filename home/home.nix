@@ -218,8 +218,8 @@ in
       window.opacity = 1.0;
       colors = {
         primary = {
-          background = "#${config.colorScheme.colors.base00}";
-          foreground = "#${config.colorScheme.colors.base05}";
+          background = "#${config.colorScheme.palette.base00}";
+          foreground = "#${config.colorScheme.palette.base05}";
         };
         normal = {
           black = "${mainColors.black}";
@@ -239,8 +239,8 @@ in
   programs.zellij.settings = {
     theme = "custom";
     themes.custom = {
-      fg = "#${config.colorScheme.colors.base00}";
-      bg = "#${config.colorScheme.colors.base05}";
+      fg = "#${config.colorScheme.palette.base00}";
+      bg = "#${config.colorScheme.palette.base05}";
       black = "${mainColors.black}";
       red = "${mainColors.red}";
       green = "${mainColors.green}";
@@ -249,7 +249,7 @@ in
       magenta = "${mainColors.purple}";
       cyan = "${mainColors.cyan}";
       white = "${mainColors.white}";
-      orange = "#${config.colorScheme.colors.base0F}";
+      orange = "#${config.colorScheme.palette.base0F}";
     };
   };
 
