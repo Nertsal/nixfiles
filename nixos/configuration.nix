@@ -167,6 +167,11 @@
   # LeftWM
   services.xserver.windowManager.leftwm.enable = true;
 
+  # Locker
+  programs.slock = {
+    enable = true;
+  };
+
   # Hyprland
   programs.hyprland = {
     enable = true;
