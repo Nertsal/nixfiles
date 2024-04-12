@@ -138,34 +138,39 @@
   # };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver = {
+    enable = true;
 
-  # services.xserver.displayManager.lightdm.enable = true;
+    # GNOME
+    displayManager.gdm.enable = true;
 
-  # GNOME
-  services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
-  # environment.gnome.excludePackages = (with pkgs; [
-  #   gnome-photos
-  #   gnome-tour
-  # ]) ++ (with pkgs.gnome; [
-  #   cheese
-  #   gnome-music
-  #   gnome-terminal
-  #   gedit
-  #   epiphany
-  #   geary
-  #   evince
-  #   gnome-characters
-  #   totem
-  #   tali
-  #   iagno
-  #   hitori
-  #   atomix
-  # ]);
+    # TODO: doesn't work idk
+    displayManager.setupCommands = ''
+    ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-1-0 --pos 1920x0 --rate 119.98 --primary --mode 1920x1080
+    '';
 
-  # LeftWM
-  services.xserver.windowManager.leftwm.enable = true;
+    # LeftWM
+    windowManager.leftwm.enable = true;
+
+    # Configure keymap in X11
+    xkb = {
+      layout = "us,ru";
+      options = "grp:alt_shift_toggle";
+    };
+
+    libinput = {
+      enable = true;
+
+      mouse = {
+        accelProfile = "flat";
+        accelSpeed = "-0.32";
+      };
+
+      touchpad = {
+        accelProfile = "flat";
+      };
+    };
+  };
 
   # Locker
   programs.slock = {
@@ -199,18 +204,6 @@
     '';
   };
 
-  # Configure keymap in X11
-  services.xserver = {
-    xkb = {
-      layout = "us,ru";
-      options = "grp:alt_shift_toggle";
-    };
-  };
-  # services.xserver.xkbOptions = {
-  #   "eurosign:e";
-  #   "caps:escape" # map caps to escape.
-  # };
-
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -232,9 +225,6 @@
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -282,5 +272,7 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
 
+  # For osu! 
+  hardware.opentabletdriver.enable = true;
 }
 
