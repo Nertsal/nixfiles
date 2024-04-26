@@ -51,7 +51,7 @@ in
 
   # inputs.nix-colors.colorSchemes.icy
   # Set color scheme for use in configs
-  colorScheme = {
+  palette = {
     slug = "nertdarker";
     name = "NertDarker";
     author = "Nertsal";
@@ -218,8 +218,8 @@ in
       window.opacity = 1.0;
       colors = {
         primary = {
-          background = "#${config.colorScheme.palette.base00}";
-          foreground = "#${config.colorScheme.palette.base05}";
+          background = "#${config.palette.palette.base00}";
+          foreground = "#${config.palette.palette.base05}";
         };
         normal = {
           black = "${mainColors.black}";
@@ -239,8 +239,8 @@ in
   programs.zellij.settings = {
     theme = "custom";
     themes.custom = {
-      fg = "#${config.colorScheme.palette.base00}";
-      bg = "#${config.colorScheme.palette.base05}";
+      fg = "#${config.palette.palette.base00}";
+      bg = "#${config.palette.palette.base05}";
       black = "${mainColors.black}";
       red = "${mainColors.red}";
       green = "${mainColors.green}";
@@ -249,7 +249,7 @@ in
       magenta = "${mainColors.purple}";
       cyan = "${mainColors.cyan}";
       white = "${mainColors.white}";
-      orange = "#${config.colorScheme.palette.base0F}";
+      orange = "#${config.palette.palette.base0F}";
     };
   };
 
