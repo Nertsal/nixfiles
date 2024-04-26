@@ -106,10 +106,10 @@
 
   # Pick only one of the below networking options.
   # Using wpa_supplicant because of wpa-eap (see right below)
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
   # Enables wireless support via wpa_supplicant.
   networking.wireless = {
-    enable = false;
+    enable = true;
     # Allow configuration via `wpa_gui` and `wpa_cli`
     # (user must also be part of `wheel` group)
     # userControlled.enable = true;
@@ -242,9 +242,8 @@
     enableOnBoot = true;
   };
 
-  # VirtualBox
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "nertsal" ];
+  # For osu!
+  hardware.opentabletdriver.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -271,8 +270,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
-  # For osu! 
-  hardware.opentabletdriver.enable = true;
 }
 
