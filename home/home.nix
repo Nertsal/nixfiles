@@ -100,8 +100,6 @@ in
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    dmenu # X program selector
-
     ghc # I like my `ghci`
     # haskellPackages.ghcWithPackages (pkgs: with pkgs; [ cabal-install ])
     cabal-install
@@ -128,6 +126,7 @@ in
     feh # Background
     picom
     polybar # Bar
+    rofi # Program runner
 
     haruna # Media player
     any-nix-shell # Keep shell when in nix-shell
@@ -164,6 +163,7 @@ in
 
     ".config/leftwm".source = ./leftwm;
     ".config/polybar".source = ./polybar;
+    ".config/rofi".source = ./rofi;
 
     ".config/helix".source = ./helix;
     ".config/alacritty.yml".source = ./alacritty.yml;
@@ -194,6 +194,10 @@ in
     SHELL = "fish";
     EDITOR = "hx";
   };
+
+  home.sessionPath = [
+    "/home/nertsal/.cargo/bin/"
+  ];
 
   # `git` config
   programs.git = {

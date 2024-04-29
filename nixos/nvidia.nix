@@ -46,9 +46,9 @@ in
 
   # Optimus mode
   hardware.nvidia.prime = {
-    # sync.enable = true; # gpu always
+    sync.enable = true; # gpu always
     # reverseSync.enable = true; # mainly Intel, nvidia if necessary
-    offload.enable = true; # gpu on demand
+    # offload.enable = true; # gpu on demand
     # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
     intelBusId = "PCI:0:2:0";
     # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA

@@ -106,10 +106,10 @@
 
   # Pick only one of the below networking options.
   # Using wpa_supplicant because of wpa-eap (see right below)
-  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   # Enables wireless support via wpa_supplicant.
   networking.wireless = {
-    enable = true;
+    enable = false;
     # Allow configuration via `wpa_gui` and `wpa_cli`
     # (user must also be part of `wheel` group)
     # userControlled.enable = true;
@@ -141,13 +141,14 @@
   services.xserver = {
     enable = true;
 
-    # GNOME
     displayManager.gdm.enable = true;
 
-    # TODO: doesn't work idk
     displayManager.setupCommands = ''
-    ${pkgs.xorg.xrandr}/bin/xrandr --output HDMI-1-0 --pos 1920x0 --rate 119.98 --primary --mode 1920x1080
+    ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1-1 --pos 0x0 --rate 60.02 --mode 1920x1080 --output HDMI-0 --pos 1920x0 --rate 119.98 --primary --mode 1920x1080
     '';
+
+    # GNOME
+    desktopManager.gnome.enable = true;
 
     # LeftWM
     windowManager.leftwm.enable = true;
@@ -171,6 +172,26 @@
       };
     };
   };
+
+  # Minimal Gnome
+  environment.gnome.excludePackages = (with pkgs; [
+    gnome-photos
+    gnome-tour
+    gedit
+  ]) ++ (with pkgs.gnome; [
+    cheese
+    gnome-music
+    gnome-terminal
+    epiphany
+    geary
+    evince
+    gnome-characters
+    totem
+    tali
+    iagno
+    hitori
+    atomix
+  ]);
 
   # Locker
   programs.slock = {
