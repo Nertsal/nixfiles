@@ -9,7 +9,7 @@
         input-overlay
         obs-backgroundremoval
         obs-vkcapture
-        obs-livesplit-one
+        obs-pipewire-audio-capture
       ];
     })
   ];

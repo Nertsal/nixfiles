@@ -158,18 +158,18 @@
       layout = "us,ru";
       options = "grp:alt_shift_toggle";
     };
+  };
 
-    libinput = {
-      enable = true;
+  services.libinput = {
+    enable = true;
 
-      mouse = {
-        accelProfile = "flat";
-        accelSpeed = "-0.32";
-      };
+    mouse = {
+      accelProfile = "flat";
+      accelSpeed = "-0.32";
+    };
 
-      touchpad = {
-        accelProfile = "flat";
-      };
+    touchpad = {
+      accelProfile = "flat";
     };
   };
 
