@@ -32,7 +32,7 @@ in
   ];
 
   # Enable OpenGL
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Select the appropriate driver version for the GPU
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;

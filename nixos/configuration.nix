@@ -66,9 +66,12 @@
     grim # Screenshot backend
     slurp # Region selection utility
 
+    # Text editors
+    neovim
+    helix
+    micro
+
     tealdeer # Fast `tldr` - short `man`
-    neovim # Text editor
-    helix # Text editor
     wget
     alacritty # Terminal
     kitty # Hyprland default terminal
@@ -178,15 +181,15 @@
     gnome-photos
     gnome-tour
     gedit
-  ]) ++ (with pkgs.gnome; [
     cheese
-    gnome-music
     gnome-terminal
     epiphany
     geary
     evince
-    gnome-characters
     totem
+  ]) ++ (with pkgs.gnome; [
+    gnome-music
+    gnome-characters
     tali
     iagno
     hitori
@@ -229,7 +232,6 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
 
   # Pipewire audio
