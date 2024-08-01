@@ -117,6 +117,7 @@ in
     audacity # Audio editing
     # obsidian # Knowledge base
     ffmpeg # Audio stuff
+    blender # Be blendin
 
     # Wayland specific
     hyprpaper # Background image
