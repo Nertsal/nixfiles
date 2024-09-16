@@ -353,7 +353,7 @@ in
       yzhang.markdown-all-in-one
       ritwickdey.liveserver
       ms-toolsai.jupyter
-      ms-python.python
+      # ms-python.python
     ];
   };
 }

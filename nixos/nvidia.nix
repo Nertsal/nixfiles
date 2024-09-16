@@ -34,6 +34,9 @@ in
   # Enable OpenGL
   hardware.graphics.enable = true;
 
+  # Whether to enable the open source NVIDIA kernel module.
+  hardware.nvidia.open = false;
+
   # Select the appropriate driver version for the GPU
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 

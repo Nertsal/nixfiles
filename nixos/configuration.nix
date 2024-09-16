@@ -92,7 +92,7 @@
     xh # Friendly curl
     xxh # Bring your shell through ssh
     erdtree # File-tree visualizer and disk usage analyzer
-    felix-fm # Tui file manager
+    # felix-fm # Tui file manager
     ripgrep # Grep the rip
     topgrade # Update everything
     kondo # Cleaner after you upgrade everything
@@ -102,6 +102,8 @@
     speedtest-rs # Speedtest cli
     wiki-tui # Wiki tui
     cargo-info # Fetch info about rust crates
+
+    lutris # we be gaming
   ];
 
   programs.fish.enable = true;
@@ -187,7 +189,6 @@
     geary
     evince
     totem
-  ]) ++ (with pkgs.gnome; [
     gnome-music
     gnome-characters
     tali
@@ -258,6 +259,17 @@
   # };
 
   # List services that you want to enable:
+
+  # Wifi hotspot configuration
+  services.create_ap = {
+    enable = true;
+    settings = {
+      INTERNET_IFACE = "enp59s0";
+      WIFI_IFACE = "wlp0s20f3";
+      SSID = "nertfi";
+      PASSPHRASE = "19283746";
+    };
+  };
 
   # Docker
   virtualisation.docker = {
