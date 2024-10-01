@@ -23,8 +23,32 @@ max-wrap = 25 # increase value to reduce forced mid-word wrapping
 max-indent-retain = 0
 wrap-indicator = "↪"  # set wrap-indicator to "" to hide it
 
+[editor.lsp]
+display-messages = true
+auto-signature-help = true
+snippets = false
+
 [keys.normal]
 C-s = ":w"
+C-q = ":bc"
 C-y = ":clipboard-yank"
 C-p = ":clipboard-paste-before"
 C-v = ":clipboard-paste-before"
+L = "goto_line_end"
+H = "goto_first_nonwhitespace"
+V = ["goto_first_nonwhitespace", "extend_to_line_end"]
+D = ["ensure_selections_forward", "extend_to_line_end"]
+C-j = ["move_line_down","move_line_down","move_line_down","move_line_down","move_line_down"]
+C-k = ["move_line_up","move_line_up","move_line_up","move_line_up","move_line_up"]
+A-j = ["scroll_down", "scroll_down", "scroll_down", "scroll_down"]
+A-k = ["scroll_up", "scroll_up", "scroll_up", "scroll_up"]
+i = ["insert_mode", "collapse_selection"]
+a = ["append_mode", "collapse_selection"]
+A-t = "switch_to_uppercase"
+A-g = "switch_to_lowercase"
+
+[keys.normal.space]
+"n" = "file_picker_in_current_buffer_directory"
+
+[keys.insert]
+C-c = "normal_mode"
