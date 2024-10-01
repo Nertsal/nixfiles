@@ -45,6 +45,16 @@
       # Moved to home-manager
     ];
   };
+  users.users.testsubject = {
+    isNormalUser = true;
+    shell = pkgs.fish; # Default shell
+    extraGroups = [
+      "networkmanager"
+      "wheel" # Enable ‘sudo’ for the user
+      "video" # To adjust screen brightness
+      "input" # To read keyboard input
+    ];
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
