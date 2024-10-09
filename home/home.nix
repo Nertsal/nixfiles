@@ -107,17 +107,18 @@ in
     mesa_glu # Required for gloss
     freeglut # Required for gloss
 
-    gimp # Image editor
     tdesktop # Telegram
     webcord # Because discord cant screenshare on wayland
     # discord
 
     kdenlive # Video editing
     aseprite # Pixel art - older version
+    gimp # Image editor
     audacity # Audio editing
     # obsidian # Knowledge base
     ffmpeg # Audio stuff
     blender # Be blendin
+    obsidian # Fancy Markdown editor
 
     # Wayland specific
     hyprpaper # Background image
