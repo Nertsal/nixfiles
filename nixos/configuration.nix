@@ -183,6 +183,7 @@
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
     gnome-tour
+    orca
     gedit
     cheese
     gnome-terminal
