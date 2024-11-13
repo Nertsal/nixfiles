@@ -102,6 +102,7 @@
     xh # Friendly curl
     xxh # Bring your shell through ssh
     erdtree # File-tree visualizer and disk usage analyzer
+    du-dust # A more intuitive version of du in Rust
     # felix-fm # Tui file manager
     ripgrep # Grep the rip
     topgrade # Update everything

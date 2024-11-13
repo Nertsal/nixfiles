@@ -110,10 +110,13 @@ in
     tdesktop # Telegram
     webcord # Because discord cant screenshare on wayland
     # discord
+    reaper # DAW
 
     kdenlive # Video editing
     aseprite # Pixel art - older version
     gimp # Image editor
+    krita # Painting application
+    inkscape # Vector graphics editor
     audacity # Audio editing
     # obsidian # Knowledge base
     ffmpeg # Audio stuff
