@@ -171,7 +171,7 @@ in
     ".config/rofi".source = ./rofi;
 
     ".config/helix".source = ./helix;
-    ".config/alacritty.yml".source = ./alacritty.yml;
+    ".config/alacritty".source = ./alacritty;
 
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a

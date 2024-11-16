@@ -1,0 +1,21 @@
+[colors.normal]
+black = "#16181a"
+blue = "#519fdf"
+cyan = "#46a6b2"
+green = "#7da869"
+magenta = "#b668cd"
+red = "#d05c65"
+white = "#abb2bf"
+yellow = "#d5b06b"
+
+[colors.primary]
+background = "#081012"
+foreground = "#abb2bf"
+
+[terminal.shell]
+program = "fish"
+
+[window]
+opacity = 1.0
+
+[terminal]
