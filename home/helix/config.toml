@@ -52,3 +52,7 @@ A-g = "switch_to_lowercase"
 
 [keys.insert]
 C-c = "normal_mode"
+
+[keys.select]
+V = ["goto_first_nonwhitespace", "extend_to_line_end"]
+D = ["ensure_selections_forward", "extend_to_line_end"]

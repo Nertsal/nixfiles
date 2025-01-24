@@ -45,6 +45,11 @@
       dots = "home-manager --flake $HOME/nixfiles";
       # Rebuild flake
       nixos = "sudo nixos-rebuild --flake $HOME/nixfiles";
+      # git aliases
+      gs = "git status";
+      gd = "git diff";
+      gc = "git switch";
+      lg = "lazygit";
     };
   };
 
