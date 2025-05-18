@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 let
   # 'onedarker'
@@ -112,7 +112,7 @@ in
     # discord
     reaper # DAW
 
-    kdenlive # Video editing
+    kdePackages.kdenlive # Video editing
     aseprite # Pixel art - older version
     gimp # Image editor
     krita # Painting application
@@ -135,9 +135,6 @@ in
 
     haruna # Media player
     any-nix-shell # Keep shell when in nix-shell
-
-    # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-    nerdfonts
 
     # LSP's
     rust-analyzer # Rust
@@ -202,6 +199,7 @@ in
 
   home.sessionPath = [
     "/home/nertsal/.cargo/bin/"
+    "/home/nertsal/.local/bin/"
   ];
 
   # `git` config
@@ -351,7 +349,7 @@ in
 
   programs.vscode = {
     enable = true;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       dracula-theme.theme-dracula
       vscodevim.vim
       yzhang.markdown-all-in-one

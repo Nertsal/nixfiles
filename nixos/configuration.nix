@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   imports =
@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./obs.nix
       ./nvidia.nix # Partially working on wayland
+      ./vpn.nix
     ];
 
   nix = {
@@ -103,6 +104,7 @@
     xxh # Bring your shell through ssh
     erdtree # File-tree visualizer and disk usage analyzer
     du-dust # A more intuitive version of du in Rust
+    dua # View disk space usage and delete unwanted data, fast. 
     felix-fm # Tui file manager
     ripgrep # Grep the rip
     topgrade # Update everything
@@ -117,15 +119,19 @@
     lutris # we be gaming
   ];
 
+  # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+  fonts.packages = []
+    ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+
   programs.fish.enable = true;
   environment.shells = with pkgs; [ fish ];
 
   # Pick only one of the below networking options.
   # Using wpa_supplicant because of wpa-eap (see right below)
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
   # Enables wireless support via wpa_supplicant.
   networking.wireless = {
-    enable = false;
+    enable = true;
     # Allow configuration via `wpa_gui` and `wpa_cli`
     # (user must also be part of `wheel` group)
     # userControlled.enable = true;
@@ -233,7 +239,7 @@
   };
 
   # Enable sound.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   # Pipewire audio
   services.pipewire = {
