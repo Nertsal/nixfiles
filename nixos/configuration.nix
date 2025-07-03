@@ -57,6 +57,11 @@
     ];
   };
 
+  # home-manager.users.nertsal.imports = [ "../home/home.nix" ];
+  # home-manager.extraSpecialArgs = {
+  #   inherit inputs hostname system;
+  # };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -117,6 +122,10 @@
     cargo-info # Fetch info about rust crates
 
     lutris # we be gaming
+    supergfxctl # controlling discrete gpu
+    asusctl # asus-specific controls for power/fan profile
+    powertop # measure watt discharge rate
+    lm_sensors # measure temperature
   ];
 
   # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
@@ -128,10 +137,10 @@
 
   # Pick only one of the below networking options.
   # Using wpa_supplicant because of wpa-eap (see right below)
-  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   # Enables wireless support via wpa_supplicant.
   networking.wireless = {
-    enable = true;
+    enable = false;
     # Allow configuration via `wpa_gui` and `wpa_cli`
     # (user must also be part of `wheel` group)
     # userControlled.enable = true;
@@ -156,9 +165,9 @@
 
     displayManager.gdm.enable = true;
 
-    displayManager.setupCommands = ''
-    ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1-1 --pos 0x0 --rate 60.02 --mode 1920x1080 --output HDMI-0 --pos 1920x0 --rate 119.98 --primary --mode 1920x1080
-    '';
+    # displayManager.setupCommands = ''
+    # ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1-1 --pos 0x0 --rate 60.02 --mode 1920x1080 --output HDMI-0 --pos 1920x0 --rate 119.98 --primary --mode 1920x1080
+    # '';
 
     # GNOME
     desktopManager.gnome.enable = true;
@@ -185,6 +194,8 @@
       accelProfile = "flat";
     };
   };
+
+  services.asusd.enable = true;
 
   # Minimal Gnome
   environment.gnome.excludePackages = (with pkgs; [

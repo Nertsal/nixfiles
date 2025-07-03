@@ -31,6 +31,9 @@ in
     glmark2 # OpenGL benchmark
   ];
 
+  # Configuring discrete gpu with `supergfxctl`
+  services.supergfxd.enable = true;
+
   # Enable OpenGL
   hardware.graphics.enable = true;
 
