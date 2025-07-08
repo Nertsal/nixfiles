@@ -162,6 +162,7 @@ in
     ".config/hypr".source = ./hypr;
     ".config/waybar".source = ./waybar;
     ".config/wofi".source = ./wofi;
+    ".config/swaylock".source = ./swaylock;
 
     ".config/leftwm".source = ./leftwm;
     ".config/polybar".source = ./polybar;
