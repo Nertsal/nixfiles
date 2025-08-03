@@ -70,8 +70,8 @@ in
   # setting is also valid for wayland installations despite it's name
   services.xserver = {
     videoDrivers = [ "nvidia" ];
-    displayManager.gdm.wayland = true;
   };
+  services.displayManager.gdm.wayland = true;
 
   # Kernel modules
   # <https://wiki.hyprland.org/Nvidia/>

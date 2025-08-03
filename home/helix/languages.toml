@@ -11,7 +11,7 @@ auto-format = true
 
 [[language]]
 name = "gdscript"
-language-servers = ["godot"] 
+language-servers = ["godot"]
 
 [language-server.godot]
 command = "nc"

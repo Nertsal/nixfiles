@@ -160,17 +160,21 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   # Enable the X11 windowing system.
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome = {
+    enable = true;
+    # extraGSettingsOverridePackages = [pkgs.mutter];
+    # extraGSettingsOverrides = ''
+    #   [org.gnome.mutter]
+    #   experimental-features=['x11-randr-fractional-scaling']
+    # '';
+  };
   services.xserver = {
     enable = true;
-
-    displayManager.gdm.enable = true;
 
     # displayManager.setupCommands = ''
     # ${pkgs.xorg.xrandr}/bin/xrandr --output eDP-1-1 --pos 0x0 --rate 60.02 --mode 1920x1080 --output HDMI-0 --pos 1920x0 --rate 119.98 --primary --mode 1920x1080
     # '';
-
-    # GNOME
-    desktopManager.gnome.enable = true;
 
     # LeftWM
     windowManager.leftwm.enable = true;
