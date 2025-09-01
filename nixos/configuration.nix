@@ -137,10 +137,10 @@
 
   # Pick only one of the below networking options.
   # Using wpa_supplicant because of wpa-eap (see right below)
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
   # Enables wireless support via wpa_supplicant.
   networking.wireless = {
-    enable = false;
+    enable = true;
     # Allow configuration via `wpa_gui` and `wpa_cli`
     # (user must also be part of `wheel` group)
     # userControlled.enable = true;

@@ -47,7 +47,7 @@ in
   hardware.nvidia.modesetting.enable = true;
 
   # Fix graphical corruption on suspend/resume
-  # hardware.nvidia.powerManagement.enable = true;
+  hardware.nvidia.powerManagement.enable = true;
   # hardware.nvidia.powerManagement.finegrained = true; # TODO: check
 
   # Optimus mode
