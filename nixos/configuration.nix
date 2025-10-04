@@ -126,6 +126,9 @@
     asusctl # asus-specific controls for power/fan profile
     powertop # measure watt discharge rate
     lm_sensors # measure temperature
+
+    # Hyprcursor theme
+    inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
   # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
