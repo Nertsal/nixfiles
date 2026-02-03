@@ -11,6 +11,7 @@
       ./obs.nix
       ./nvidia.nix # Partially working on wayland
       ./vpn.nix
+      inputs.musnix.nixosModules.musnix
     ];
 
   nix = {
@@ -41,6 +42,7 @@
       "video" # To adjust screen brightness
       "input" # To read keyboard input
       "docker" # Note: makes the user effectively root
+      "audio" # For music software
     ];
     packages = with pkgs; [
       # Moved to home-manager
@@ -270,6 +272,9 @@
       };
     };
   };
+
+  # So music software works better
+  musnix.enable = true;
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
