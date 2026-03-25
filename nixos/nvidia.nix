@@ -27,7 +27,7 @@ in
 
   environment.systemPackages = with pkgs; [
     nvidia-offload # NVIDIA offload command
-    glxinfo # OpenGL info
+    mesa-demos # OpenGL info
     glmark2 # OpenGL benchmark
   ];
 

@@ -67,7 +67,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neofetch # NixOS btw
+    fastfetch # NixOS btw
     killall # Wonder what's this for...
     pavucontrol # Audio control gui
     brightnessctl # Regulate screen brightness
@@ -110,7 +110,7 @@
     xh # Friendly curl
     xxh # Bring your shell through ssh
     erdtree # File-tree visualizer and disk usage analyzer
-    du-dust # A more intuitive version of du in Rust
+    dust # A more intuitive version of du in Rust
     dua # View disk space usage and delete unwanted data, fast. 
     felix-fm # Tui file manager
     ripgrep # Grep the rip
@@ -142,18 +142,18 @@
 
   # Pick only one of the below networking options.
   # Using wpa_supplicant because of wpa-eap (see right below)
-  networking.networkmanager.enable = false;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   # Enables wireless support via wpa_supplicant.
-  networking.wireless = {
-    enable = true;
-    # Allow configuration via `wpa_gui` and `wpa_cli`
-    # (user must also be part of `wheel` group)
-    # userControlled.enable = true;
-    # Allow insecure ciphers for WPA2-EAP institutional network connection
-    # extraConfig = ''
-    #   openssl_ciphers=DEFAULT@SECLEVEL=0
-    # '';
-  };
+  # networking.wireless = {
+  #   enable = false;
+  #   # Allow configuration via `wpa_gui` and `wpa_cli`
+  #   # (user must also be part of `wheel` group)
+  #   userControlled.enable = true;
+  #   # Allow insecure ciphers for WPA2-EAP institutional network connection
+  #   # extraConfig = ''
+  #   #   openssl_ciphers=DEFAULT@SECLEVEL=0
+  #   # '';
+  # };
 
   # Fix time for dual-booting Windows
   time.hardwareClockInLocalTime = true;
@@ -236,6 +236,11 @@
     enable = true;
   };
 
+  # Niri
+  programs.niri = {
+    enable = true;
+  };
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
@@ -250,6 +255,17 @@
       });
     })
   ];
+
+  # services.create_ap = {
+  #   enable = true;
+  #   settings = {
+  #     INTERNET_IFACE = "enp103s0f3u1";
+  #     WIFI_IFACE = "wlp3s0";
+  #     SSID = "nertfi";
+  #     PASSPHRASE = "19283746";
+  #   };
+  # };
+  # services.haveged.enable = true;
 
   # Swaylock pam
   security.pam.services.swaylock = {

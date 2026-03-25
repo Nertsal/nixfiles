@@ -107,7 +107,7 @@ in
     mesa_glu # Required for gloss
     freeglut # Required for gloss
 
-    tdesktop # Telegram
+    telegram-desktop # Telegram
     webcord # Because discord cant screenshare on wayland
     # discord
     reaper # DAW
@@ -206,11 +206,15 @@ in
   # `git` config
   programs.git = {
     enable = true;
-    userName = "nertsal";
-    userEmail = "nestralnertsal@gmail.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-      push.autoSetupRemote = true;
+    settings = {
+      user = {
+        name = "nertsal";
+        email = "nestralnertsal@gmail.com";
+      };
+      extraConfig = {
+        init.defaultBranch = "main";
+        push.autoSetupRemote = true;
+      };
     };
   };
 
