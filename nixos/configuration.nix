@@ -30,6 +30,11 @@
   boot.loader.systemd-boot.configurationLimit = 10; # limit number of entries
   boot.loader.efi.canTouchEfiVariables = true;
 
+  boot.kernelParams = [
+    "i915.enable_dpcd_backlight=1" # Controlling screen brightness
+    "acpi_backlight=native" # Controlling screen brightness
+  ];
+
   networking.hostName = "nixal"; # Define your hostname.
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

@@ -12,4 +12,6 @@
     enable = true;
     cliPackage = pkgs.xray;
   };
+
+  programs.amnezia-vpn.enable = true;
 }
