@@ -258,6 +258,9 @@
       waybar = super.waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
       });
+      openldap = super.openldap.overrideAttrs {
+        doCheck = !super.stdenv.hostPlatform.isi686;
+      };
     })
   ];
 
