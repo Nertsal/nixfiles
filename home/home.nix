@@ -111,6 +111,8 @@ in
     webcord # Because discord cant screenshare on wayland
     # discord
     reaper # DAW
+    yabridgectl # windows plugins compatibiility
+    yabridge
 
     kdePackages.kdenlive # Video editing
     aseprite # Pixel art - older version
