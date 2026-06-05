@@ -136,6 +136,7 @@ in
     rofi # Program runner
 
     haruna # Media player
+    eog
     any-nix-shell # Keep shell when in nix-shell
 
     # LSP's
