@@ -108,8 +108,8 @@ in
     freeglut # Required for gloss
 
     telegram-desktop # Telegram
-    webcord # Because discord cant screenshare on wayland
-    # discord
+    # webcord # Because discord cant screenshare on wayland
+    discord
     reaper # DAW
     yabridgectl # windows plugins compatibiility
     yabridge
