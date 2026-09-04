@@ -144,6 +144,7 @@ in
     nil # Nix
     haskellPackages.haskell-language-server # Haskell
     marksman # Markdown
+    simple-completion-language-server # Completion LSP for snippets and unicode
 
     zola # Static site generator
 

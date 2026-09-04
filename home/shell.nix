@@ -60,9 +60,9 @@
   programs.zellij.enableBashIntegration = false;
   programs.bash = {
     enable = true;
-    initExtra = ''
-      . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
-    '';
+    # initExtra = ''
+    #   . "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh"
+    # '';
     shellAliases = config.programs.fish.shellAliases;
   };
 

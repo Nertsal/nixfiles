@@ -71,7 +71,6 @@ in
   services.xserver = {
     videoDrivers = [ "nvidia" ];
   };
-  services.displayManager.gdm.wayland = true;
 
   # Kernel modules
   # <https://wiki.hyprland.org/Nvidia/>

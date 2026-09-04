@@ -82,6 +82,7 @@
     wofi # Dynamic menu library
     linux-wifi-hotspot # Easy hotspot gui
     wlr-randr # `xrandr` for wayland
+    gnome-tweaks # tweak gnome settings
 
     firefox # Web browser (global because of opengl being global)
     chromium # Because sometimes firefox doesn't work
@@ -139,7 +140,9 @@
   ];
 
   # (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-  fonts.packages = []
+  fonts.packages = [
+    pkgs.noto-fonts-cjk-sans
+  ]
     ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   programs.fish.enable = true;
@@ -213,7 +216,7 @@
 
   # Minimal Gnome
   environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
+    loupe
     gnome-tour
     orca
     gedit
