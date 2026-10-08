@@ -87,6 +87,9 @@
     firefox # Web browser (global because of opengl being global)
     chromium # Because sometimes firefox doesn't work
 
+    xdg-desktop-portal-hyprland # for screensharing
+    xdg-desktop-portal-gtk # for file-picker for some apps
+
     grim # Screenshot backend
     slurp # Region selection utility
 
